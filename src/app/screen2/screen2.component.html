@@ -1,0 +1,43 @@
+    <div class="container">
+      <div class="row">
+          <div class="col-md-4 block1">
+              <form>
+                  <div class="form-group">
+                    <label for="website">Brand Website</label>
+                    <input  type="text" name="websiteUrl" class="form-control" id="id" [(ngModel)]="res.websiteUrl" placeholder="Enter brand website" readonly>
+                    <!-- <small id="idHelp" class="form-text text-muted">Enter your contact’s ID</small> -->
+        
+                    <label for="name">Brand Name</label>
+                    <input  type="text" name="name" class="form-control" id="name" [(ngModel)]="res.name" placeholder="Enter brand name" readonly>
+                    <!-- <small id="nameHelp" class="form-text text-muted">Enter your contact’s name</small> -->
+        
+                    <label for="logo">Brand Logo</label>
+                    <div class="logo-conatiner">
+                      <img [src]="res.logo" />
+                    </div>
+                    
+                    <!-- <small id="nameHelp" class="form-text text-muted">Enter your contact’s email</small> -->
+        
+                    
+        
+                  </div>
+                </form>
+          </div>
+          <div class="col-md-4 block2">
+              xxx
+          </div>
+          <div class="col-md-4 block3">
+              <label for="description">Brand Description</label>
+                    <textarea  name="description" class="form-control" id="description" [(ngModel)]="res.description" readonly>
+                              </textarea>
+                    <!-- <small id="descHelp" class="form-text text-muted">Enter your contact’s description</small> -->
+                    <label for="description">Keywords</label>
+                    <textarea  name="webkeywords" class="form-control" id="webkeywords" [(ngModel)]="res.webkeywords" readonly>
+                              </textarea>
+                    <!-- <small id="descHelp" class="form-text text-muted">Enter your contact’s description</small> -->
+          
+          </div>
+          
+        </div>
+  </div>
+
