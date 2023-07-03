@@ -3,9 +3,8 @@
         <form [formGroup]="scrapWebsiteForm" (ngSubmit)="onSubmit()">
             <div class="text-center">
                 <div class="form-outline">
-                    <input type="url" id="typeURL" formControlName="typeUrl" [(ngModel)]="typeUrl" class="form-control" placeholder="Enter website URL" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"  required/>
-                     <!-- <small id="urlHelp" class="form-text text-muted">Enter valid url</small> -->
-                     <div *ngIf="f['typeUrl'].touched && f['typeUrl'].invalid">
+                    <input type="url" id="typeURL" formControlName="typeUrl" [(ngModel)]="typeUrl" class="form-control" placeholder="Enter website URL, Eg:https://www.ekcs.co/" pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"  required/>
+                     <div *ngIf="f['typeUrl'].touched">
                         <div class="error" *ngIf="submitted && f['typeUrl'].errors['required']">Url is required</div>
                                 <div class="error" *ngIf="submitted && f['typeUrl'].errors['pattern']"> Enter valid url</div>
                      </div>
