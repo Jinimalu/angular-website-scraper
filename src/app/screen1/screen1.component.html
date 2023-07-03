@@ -1,12 +1,17 @@
 <div class="container">
     <div class="form-outline">
-        <form>
+        <form [formGroup]="scrapWebsiteForm" (ngSubmit)="onSubmit()">
             <div class="text-center">
                 <div class="form-outline">
-                    <input type="url" id="typeURL" name="typeUrl" [(ngModel)]="typeUrl" class="form-control" placeholder="Enter website URL"/>
+                    <input type="url" id="typeURL" formControlName="typeUrl" [(ngModel)]="typeUrl" class="form-control" placeholder="Enter website URL" pattern="^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$"  required/>
+                     <!-- <small id="urlHelp" class="form-text text-muted">Enter valid url</small> -->
+                     <div *ngIf="f['typeUrl'].touched && f['typeUrl'].invalid">
+                        <div class="error" *ngIf="submitted && f['typeUrl'].errors['required']">Url is required</div>
+                                <div class="error" *ngIf="submitted && f['typeUrl'].errors['pattern']"> Enter valid url</div>
+                     </div>
                 </div>
-                <div class="p-2">
-                    <a class="button" class="btn btn-primary" (click)="scrapUrl()">Scrap</a>
+                <div class="p-2 form-group">
+                    <button class="button" type="submit" class="btn btn-primary">Scrap</button>
                 </div>
             </div>
         </form>

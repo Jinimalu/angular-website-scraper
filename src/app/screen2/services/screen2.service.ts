@@ -12,4 +12,12 @@ export class Screen2Service {
   getScrapData() {
     return this.http.get<any>(`${this.url}scrap`);
   }
+  uploadImage(data: { id?: any; image: any;  }) {
+    const formdata =  new FormData;
+    formdata.append('image', data.image);
+    formdata.append('id', data.id);
+    formdata.append('name', 'logo');
+
+    return this.http.post(`${this.url}upload`, formdata);
+  }
 }

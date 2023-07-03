@@ -5,26 +5,33 @@
                   <div class="form-group">
                     <label for="website">Brand Website</label>
                     <input  type="text" name="websiteUrl" class="form-control" id="id" [(ngModel)]="res.websiteUrl" placeholder="Enter brand website" readonly>
-                    <!-- <small id="idHelp" class="form-text text-muted">Enter your contact’s ID</small> -->
         
                     <label for="name">Brand Name</label>
                     <input  type="text" name="name" class="form-control" id="name" [(ngModel)]="res.name" placeholder="Enter brand name" readonly>
-                    <!-- <small id="nameHelp" class="form-text text-muted">Enter your contact’s name</small> -->
         
                     <label for="logo">Brand Logo</label>
-                    <div class="logo-conatiner">
-                      <img [src]="res.logo" />
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="logo-conatiner">
+                          <img [src]="res.logo" />
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <input type="file" #fileInput class="custom-file-input" (change)="onFileSelect($event)"/>
+                      </div>
                     </div>
-                    
-                    <!-- <small id="nameHelp" class="form-text text-muted">Enter your contact’s email</small> -->
-        
-                    
         
                   </div>
                 </form>
           </div>
           <div class="col-md-4 block2">
-              xxx
+              <div *ngFor="let paletts of res.paletts" class="row">
+                <div class="col-md-3">
+                  <div class="color-paletts" [style.background-color]="paletts"></div>
+                </div>  
+                <div class="col-md-8"><p>{{paletts}}</p></div>
+
+              </div>
           </div>
           <div class="col-md-4 block3">
               <label for="description">Brand Description</label>

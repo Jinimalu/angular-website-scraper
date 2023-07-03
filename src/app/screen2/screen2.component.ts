@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Screen2Service } from './services/screen2.service';
-import {FormGroup, FormBuilder} from "@angular/forms";
+import {FormBuilder} from "@angular/forms";
 @Component({
   selector: 'app-screen2',
   templateUrl: './screen2.component.html',
@@ -8,13 +8,8 @@ import {FormGroup, FormBuilder} from "@angular/forms";
 })
 export class Screen2Component {
   res:any;
-  // scrapWebsiteForm: FormGroup = new FormGroup({});
   constructor(private screen2Service : Screen2Service,
-    private fb: FormBuilder,) {
-    // this.scrapWebsiteForm = fb.group(
-    //   {
-    //     websiteUrl:[""]
-    //   })
+    private fb: FormBuilder) {
   }
   
   ngOnInit() {
@@ -26,12 +21,26 @@ export class Screen2Component {
       .getScrapData()
       .subscribe((response: any) => {
         if (response["data"].code === 200) {
-          console.log("Success");
           this.res = response["data"].data;
-          console.log(this.res,'res')
-          console.log(this.res.websiteUrl,'res')
-
         }
-  })
-}
+    })
+  }
+  
+  onFileSelect = (files:Event) => {
+    let fileList = (<HTMLInputElement>files.target).files;
+    if (fileList && fileList.length > 0) {
+      let file: File = fileList[0];
+      const data = {
+        id: this.res.id,
+        image: file
+      };
+      this.screen2Service.uploadImage(data).subscribe((res: any) => {
+        if (res["data"].code === 200) {
+          this.res.logo = res["data"].data;
+        }
+      })
+    }
+    
+
+  }
 }
